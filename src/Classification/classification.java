@@ -18,6 +18,8 @@ import weka.gui.treevisualizer.PlaceNode2;
 import weka.gui.treevisualizer.TreeVisualizer;
 
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Random;
 
 public class classification{
@@ -31,7 +33,8 @@ public class classification{
         query.setDatabaseURL("jdbc:mysql://localhost:3306/test");
         query.setUsername("root");
         query.setPassword("");
-        query.setQuery("select * from `jobs-scraper-v2`");
+
+		query.setQuery("select * from `jobs-scraper-v2`");
         Instances data = query.retrieveInstances();
 		String[] opts = new String[] {"-R", "1" };
 		Remove remove = new Remove();

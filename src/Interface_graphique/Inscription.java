@@ -34,6 +34,10 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 
 public class Inscription {
+	public JComboBox ComboxEtude ;
+	public JComboBox comboExperience ;
+
+	public  JComboBox comboEx;
 
 	public JFrame frame;
     public JTextField txtMyDevelopJob;
@@ -85,6 +89,7 @@ public class Inscription {
 		SetUnderorated(true);
 	 */
 	private void initialize() {
+
 		
 		
 		frame = new JFrame();
@@ -200,15 +205,96 @@ public class Inscription {
 		panel_1.add(lblNewLabel_7);
 
 		JButton btnNewButton2 = new JButton("Loge in");
-		btnNewButton2.setBounds(700, 415, 200, 61);
+		btnNewButton2.setBounds(700, 500, 200, 61);
 		btnNewButton2.setForeground(new Color(32, 178, 170));
 		btnNewButton2.setFont(new Font("Arial Black", Font.BOLD, 15));
 		panel_1.add(btnNewButton2);
+
+		JLabel lblNewLabel_71 = new JLabel("Secteur");
+		lblNewLabel_71.setForeground(new Color(32, 178, 170));
+		lblNewLabel_71.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewLabel_71.setBounds(200, 415, 183, 41);
+		panel_1.add(lblNewLabel_71);
+		comboExperience = new JComboBox();
+		comboExperience.setBounds(300, 415, 149, 34);
+		panel_1.add(comboExperience);
+		comboExperience.addItem("Informatique");
+		comboExperience.addItem("Finance");
+		comboExperience.addItem("Activités associatives");
+		comboExperience.addItem("Chimie");
+		comboExperience.addItem("Ingénierie");
+		comboExperience.addItem("Centre d'Appel");
+		comboExperience.addItem("Logistique");
+		comboExperience.addItem("BTP");
+		comboExperience.addItem("MAintenance");
+		comboExperience.addItem("Production");
+		comboExperience.addItem("Distibution");
+		comboExperience.addItem("Tourisme");
+		comboExperience.addItem("Autres Services");
+		comboExperience.addItem("Aéroportuaire");
+		comboExperience.addItem("Éducation");
+		comboExperience.addItem("Agroalimentaire");
+		comboExperience.addItem("Administration Publique");
+		comboExperience.addItem("Réseaux");
+		comboExperience.addItem("Santé");
+		comboExperience.addItem("Industrie");
+		comboExperience.addItem("Audit");
+		comboExperience.addItem("Secrétariat");
+		comboExperience.addItem("Sécurité");
+		comboExperience.addItem("Ameublement");
+		comboExperience.addItem("Marketing");
+		comboExperience.addItem("Énergie");
+		comboExperience.addItem("Textile");
+		comboExperience.addItem("évenementiel");
+		comboExperience.addItem("Mécanique");
+		comboExperience.addItem("Automobile");
+		comboExperience.addItem("Sport");
+		comboExperience.addItem("Luxe");
+		comboExperience.addItem("Environnement");
+		comboExperience.addItem("Communication");
+		comboExperience.addItem("RH");
+		comboExperience.addItem("Commercial");
+		comboExperience.addItem("Gestion");
+		comboExperience.addItem("Juridique");
+
+		JLabel lblNewLabel_70 = new JLabel("Niveau Exp\u00E9rience");
+		lblNewLabel_70.setForeground(new Color(32, 178, 170));
+		lblNewLabel_70.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewLabel_70.setBounds(500, 415, 183, 41);
+		panel_1.add(lblNewLabel_70);
+		ComboxEtude = new JComboBox();
+		ComboxEtude.setBounds(700, 415, 149, 34);
+		panel_1.add(ComboxEtude);
+		ComboxEtude.addItem("Débutant");
+		ComboxEtude.addItem("Moins de 1 an");
+		ComboxEtude.addItem("De 1 à 3 ans");
+		ComboxEtude.addItem("De 5 à 10 ans");
+
+
+
+		JLabel lblNewLabel_72 = new JLabel("Niveau d'\u00E9tude");
+		lblNewLabel_72.setForeground(new Color(32, 178, 170));
+		lblNewLabel_72.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewLabel_72.setBounds(900, 415, 183, 41);
+		panel_1.add(lblNewLabel_72);
+		comboEx = new JComboBox();
+		comboEx.setBounds(1050, 415, 149, 34);
+		panel_1.add(comboEx);
+
+		comboEx.addItem("Bac+5 >=");
+		comboEx.addItem("Bac+4");
+		comboEx.addItem("Bac+3");
+		comboEx.addItem("Bac+2");
+		comboEx.addItem("Bac+1");
+		comboEx.addItem("Bac");
+
+
 		btnNewButton2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Authentification.main(null);
 				frame.dispose();
+
 			}
 		});
 
@@ -234,11 +320,11 @@ public class Inscription {
 					else {
 					String sql="INSERT INTO `profil`(`Login`, `Motpass`) VALUES ('"+textLogin.getText()+"','"+textMdp.getText()+"')";
 				     int rs2=st.executeUpdate(sql);
-				     Inscription window=new Inscription();
-				     window.frame.setVisible(true);
+
+
 				     JOptionPane.showMessageDialog(null,"inscription réussite!");
 				     Authentification.main(null);
-					 dispose();
+					 frame.dispose();
 					}
 				}
 				catch(Exception e1) {
@@ -253,7 +339,7 @@ public class Inscription {
 
 			}
 		});
-		btnNewButton.setBounds(268, 417, 179, 58);
+		btnNewButton.setBounds(268, 500, 179, 58);
 		panel_1.add(btnNewButton);
 
 

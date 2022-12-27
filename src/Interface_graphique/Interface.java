@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import net.proteanit.sql.DbUtils;
+import recommendation.My_ML;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -279,7 +280,11 @@ String sql ="select * from `jobs-scraper-v2`";
 		btnNewButton.setForeground(new Color(109, 76, 61));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Model.main(null);
+				try {
+					new My_ML();
+				} catch (Exception ex) {
+					throw new RuntimeException(ex);
+				}
 				dispose();
 			}
 

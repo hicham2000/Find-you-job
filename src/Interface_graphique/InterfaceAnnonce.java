@@ -69,7 +69,7 @@ public class InterfaceAnnonce {
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 188, 585);
-		panel.setBackground(new Color(32, 178, 170));
+		panel.setBackground(new Color(163, 145, 113));
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -102,7 +102,7 @@ public class InterfaceAnnonce {
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(189, 123, 1039, 482);
+		panel_4.setBounds(189, 123, 1039, 550);
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -110,14 +110,14 @@ public class InterfaceAnnonce {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Interface.main(null);
-				dispose();
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(704, 365, 220, 66);
 		btnNewButton.setForeground(new Color(0, 0, 128));
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 20));
 		panel_4.add(btnNewButton);
-		ImageIcon e=new  ImageIcon(this.getClass().getResource("inter.png"));
+		ImageIcon e=new  ImageIcon(this.getClass().getResource("info.png"));
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(617, 365, 64, 66);
@@ -127,8 +127,8 @@ public class InterfaceAnnonce {
 		
 		JTextPane txtpnCandidate = new JTextPane();
 		txtpnCandidate.setFont(new Font("Arial Nova", Font.BOLD, 25));
-		txtpnCandidate.setBackground(new Color(32, 178, 170));
-		txtpnCandidate.setText("Quickly access useful information for the candidate.");
+
+		txtpnCandidate.setText("Accès à un large éventail d'offres d'emploi.");
 		txtpnCandidate.setBounds(85, 100, 927, 51);
 		panel_4.add(txtpnCandidate);
 		
@@ -138,16 +138,16 @@ public class InterfaceAnnonce {
 		
 		JTextPane txtpnWs = new JTextPane();
 		txtpnWs.setFont(new Font("Arial Nova", Font.BOLD, 25));
-		txtpnWs.setBackground(new Color(32, 178, 170));
-		txtpnWs.setText("Simplify access to the career site from the commercial site");
+
+		txtpnWs.setText("Permettre au candidat de rechercher facilement l'offre d'emploi correspondant à ses critères.");
 		txtpnWs.setBounds(85, 184, 927, 44);
 		panel_4.add(txtpnWs);
 		
 		JTextPane txtpnD = new JTextPane();
-		txtpnD.setFont(new Font("Arial Nova", Font.BOLD, 22));
-		txtpnD.setBackground(new Color(32, 178, 170));
-		txtpnD.setText("Allow the candidate to easily search for the job offer corresponding to his criteria.");
-		txtpnD.setBounds(85, 258, 927, 51);
+		txtpnD.setFont(new Font("Arial Nova", Font.BOLD, 25));
+
+		txtpnD.setText("l'application peut offrir aux candidats la possibilité de postuler en ligne à des offres d'emploi.");
+		txtpnD.setBounds(85, 258, 927, 70);
 		panel_4.add(txtpnD);
 		
 		JPanel panel_2 = new JPanel();
@@ -157,17 +157,17 @@ public class InterfaceAnnonce {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(863, 0, 176, 126);
+		lblNewLabel_3.setBounds(550, 0, 500, 126);
 		panel_2.add(lblNewLabel_3);
 		lblNewLabel_3.setIcon(e);
 		
 		txtIntroductionToOwer = new JTextField();
 		txtIntroductionToOwer.setBounds(0, 0, 1039, 126);
 		panel_2.add(txtIntroductionToOwer);
-		txtIntroductionToOwer.setBackground(new Color(70, 130, 180));
+		txtIntroductionToOwer.setBackground(new Color(171, 196, 171));
 		txtIntroductionToOwer.setFont(new Font("Arial Black", Font.ITALIC, 31));
 		txtIntroductionToOwer.setForeground(new Color(0, 0, 0));
-		txtIntroductionToOwer.setText("          The goal of our webside: My Develop Job");
+		txtIntroductionToOwer.setText("                Nos Services");
 		txtIntroductionToOwer.setColumns(10);
 		//frame.setUndecorated(true);
 		
