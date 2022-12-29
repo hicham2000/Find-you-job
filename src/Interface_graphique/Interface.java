@@ -275,7 +275,7 @@ String sql ="select * from `jobs-scraper-v2`";
 		txtMyDevelopJob.setText("                Find your job");
 		txtMyDevelopJob.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Classify");
+		JButton btnNewButton = new JButton("Recommander selon profil");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.setForeground(new Color(109, 76, 61));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -293,7 +293,7 @@ String sql ="select * from `jobs-scraper-v2`";
 				
 			}
 		});
-		btnNewButton.setBounds(222, 232, 135, 49);
+		btnNewButton.setBounds(222, 232, 300, 49);
 		panel_1.add(btnNewButton);
 		
 		ImageIcon ik=new  ImageIcon(this.getClass().getResource("freelance.png"));

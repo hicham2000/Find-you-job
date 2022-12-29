@@ -1,6 +1,7 @@
 package recommendation;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
 
 
@@ -28,8 +29,15 @@ public class My_ML {
 
     public My_ML() throws Exception {
         JFrame f = new JFrame("Console");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel container = new JPanel();
+        JScrollPane scrPane = new JScrollPane(container);
+        f.add(scrPane);
+
+
         log = new JTextArea();
-        f.setSize(800, 600);
+        f.setSize(1200, 1000);
         f.add(log);
         f.setVisible(true);
         emplois = loademplois("data/recommandation-coded.csv");
@@ -38,62 +46,59 @@ public class My_ML {
 //		 userBased();
 //		evaluateRecommender();
 
-        HashMap<Integer,Double> itemScore =ItemSimilarity(emplois);
-        List<Integer> listtt = recommendItems(itemScore);
+        HashMap<Integer, Double> itemScore = ItemSimilarity(emplois);
+        ArrayList<Integer> listtt = recommendItems(itemScore);
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver O.K.");
-            String url="jdbc:mysql://localhost:3306/test";
-            String user="root";
-            String  passwd="";
-            Connection con= DriverManager.getConnection(url, user, passwd);
-            Statement st1=con.createStatement();
+            String url = "jdbc:mysql://localhost:3306/test";
+            String user = "root";
+            String passwd = "";
 
-            //ResultSet rs=st.executeQuery("SELECT DISTINCT `Type_contrat`,`niveau_etude`,`niveau_experience` FROM `offre`");
-//            for(int j=0;j<listtt.size();j++){
-            ArrayList<Integer> num = new ArrayList<Integer>();
-            int[] array = new int[listtt.size()];
-            for(int i = 0; i < listtt.size(); i++) array[i] = listtt.get(i);
+            Connection con = DriverManager.getConnection(url, user, passwd);
+            Statement st1 = con.createStatement();
 
-//                System.out.println("SELECT * FROM `jobs-scraper-v2` WHERE id in ("+item.toString()+")");
-
-            System.out.println(array.);
-            int numm = Integer.parseInt(String.valueOf(array[0]));
-            String hi = "SELECT * FROM `jobs-scraper-v2` WHERE id IN ("+numm+")";
-            System.out.println(hi);
-
-                ResultSet rs1=st1.executeQuery(hi);
+            for(int i = 0; i < listtt.size(); i++){
 
 
+            String hi = "SELECT * FROM `jobs-scraper-v2` WHERE id IN (" + listtt.get(i) + ")";
 
-                ResultSetMetaData resultMeta = rs1.getMetaData();
-                while(rs1.next()){
-                    for(int i = 1; i <= resultMeta.getColumnCount(); i++) {
-                        System.out.print(rs1.getObject(i).toString() + "|");//utilisé pour tester en console
-                    }
 
-                    // System.out.println("\n---------------------------------");//imprime les lignes//utilisé pour tester
+            ResultSet rs1 = st1.executeQuery(hi);
 
-                }
-                System.out.print("\n");
+
+            ResultSetMetaData resultMeta = rs1.getMetaData();
+            while (rs1.next()) {
+//                for (int j = 1; j <= resultMeta.getColumnCount(); j++) {
+                    prompt(rs1.getObject(1).toString() + "|");//utilisé pour tester en console
+                    prompt(rs1.getObject(resultMeta.getColumnCount()).toString() + "|");//utilisé pour tester en console
+//                }
+
+                // System.out.println("\n---------------------------------");//imprime les lignes//utilisé pour tester
+
+            }
+
 //            }
 
 
 
-            con.close();
 
-        }catch(Exception e1){
-            e1.printStackTrace();
+        } con.close();
 
         }
+        catch (Exception e1) {
+                e1.printStackTrace();
+    }
 
 
     }
 
-    public void prompt(String msg) {
-        log.append(msg );
-    }
+
+        public void prompt(String msg) {
+            log.append(msg + "\n");
+        }
+
 
     static HashMap<Integer,ArrayList<String>>  emplois;
 
@@ -153,11 +158,11 @@ public class My_ML {
         return itemScore;
 
     }
+   public static ArrayList<Integer> Ids = new ArrayList<Integer>();
+    public static ArrayList<Integer> recommendItems(HashMap<Integer,Double> itemScore) {
 
-    public static List<Integer> recommendItems(HashMap<Integer,Double> itemScore) {
 
 
-        ArrayList<Integer> Ids = new ArrayList<Integer>();
         List<Map.Entry<Integer, Double>> list = new ArrayList<>(itemScore.entrySet());
 
         // Sort the list using a custom Comparator
@@ -183,7 +188,7 @@ public class My_ML {
             recommendedItems.add(entry.getKey());
             count++;
             Ids.add(entry.getKey());
-            if (count >= 100) {
+            if (count >= 40) {
                 break;
             }
         }
